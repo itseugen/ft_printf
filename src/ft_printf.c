@@ -6,7 +6,7 @@
 /*   By: eweiberl <eweiberl@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 13:17:21 by eweiberl          #+#    #+#             */
-/*   Updated: 2023/04/27 15:09:46 by eweiberl         ###   ########.fr       */
+/*   Updated: 2023/05/01 11:58:30 by eweiberl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,24 @@ static int	printfunc(const char *str, int ccount, va_list args)
 
 static int	varhandle(char c, va_list args)
 {
-	int	ccount;
+	int	cnt;
 
-	ccount = 0;
+	cnt = 0;
 	if (c == 'c')
-		ccount = ft_putchar(va_arg(args, int));
+		cnt = ft_putchar(va_arg(args, int));
 	if (c == 's')
-		ccount = ft_putstr(va_arg(args, char *));
+		cnt = ft_putstr(va_arg(args, char *));
 	if (c == '%')
-		ccount = ft_putchar('%');
+		cnt = ft_putchar('%');
 	if (c == 'i' || c == 'd')
-		ccount = ft_putint(va_arg(args, int));
-	if (c == 'x' || c == 'X')
-		ccount = ft_puthex((long)va_arg(args, unsigned int), c);
+		cnt = ft_putint(va_arg(args, int));
+	if (c == 'x')
+		cnt = ft_puthex((long)va_arg(args, unsigned int), "0123456789abcdef");
+	if (c == 'X')
+		cnt = ft_puthex((long)va_arg(args, unsigned int), "0123456789ABCDEF");
 	if (c == 'p')
-		ccount = ft_put_ptr(va_arg(args, void *));
+		cnt = ft_put_ptr(va_arg(args, void *));
 	if (c == 'u')
-		ccount = ft_putunsigned(va_arg(args, unsigned int));
-	return (ccount);
+		cnt = ft_putunsigned(va_arg(args, unsigned int));
+	return (cnt);
 }

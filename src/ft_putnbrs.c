@@ -6,7 +6,7 @@
 /*   By: eweiberl <eweiberl@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 18:43:32 by eweiberl          #+#    #+#             */
-/*   Updated: 2023/04/26 14:57:52 by eweiberl         ###   ########.fr       */
+/*   Updated: 2023/05/01 11:55:48 by eweiberl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,11 @@ int	ft_putnbr(int n)
 	return (0);
 }
 
-int	ft_puthex(long n, char type)
+int	ft_puthex(long n, char *hex)
 {
 	char	buff[9];
-	char	*hex;
 	int		i;
 
-	hex = "0123456789abcdef";
-	if (type == 'X')
-		hex = "0123456789ABCDEF";
 	i = 0;
 	if (n == 0)
 		return (ft_putchar('0'));
